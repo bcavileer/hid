@@ -14,14 +14,15 @@ module HID
           end
 
           def recorded(type)
-            if type
-              records_class.where(id_type: type).pluck(:input)
-            else
-              untyped_records
-            end
+            return typed_records(type) if type
+            untyped_records
           end
 
           private
+
+          def typed_records(type)
+            records_class.where(id_type: type).pluck(:input)
+          end
 
           def untyped_records
             record_groups = records_class.all.group_by(&:id_type)

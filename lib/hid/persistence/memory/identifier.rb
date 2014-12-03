@@ -6,13 +6,11 @@ module HID
           attr_accessor :store
 
           def find(input, type)
-            if (type_hash = store[type])
-              type_hash[input]
-            end
+            (type_hash = store[type]) && type_hash[input]
           end
 
           def map(input, identity, type)
-            type_hash         = store[type] ||= Hash.new
+            type_hash = store[type] ||= Hash.new
             type_hash[input] = identity
             nil
           end

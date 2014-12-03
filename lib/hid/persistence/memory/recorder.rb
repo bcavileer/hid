@@ -7,20 +7,14 @@ module HID
 
           def record(input, type)
             type_array = store[type] ||= []
-
-            unless type_array.include? input
-              type_array << input
-            end
-
+            return if type_array.include? input
+            type_array << input
             nil
           end
 
           def recorded(type)
-            if type
-              store[type] || []
-            else
-              store
-            end
+            return store unless type
+            store[type] || []
           end
         end
       end

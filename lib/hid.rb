@@ -7,12 +7,8 @@ module HID
 
     def identify(unknown, type=nil)
       identity = find unknown, type
-
-      if identity
-        identity
-      else
-        record unknown, type
-      end
+      return identity if identity
+      record unknown, type
     end
 
     def map(unknown, identity, type=nil)
