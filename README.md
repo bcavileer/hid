@@ -20,7 +20,44 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure (optional):
+
+    HID.configure do |config|
+        config.identifier = SomeIdentifier
+        config.recorder = SomeRecorder
+    end
+
+Examples: (these were executed **in order** in a REPL)
+    
+    HID.identify 'foo'
+    => nil
+    
+    HID.map 'bar', 'baz'
+    => nil
+    
+    HID.identify 'bar'
+    => "baz"
+    
+    HID.recorded
+    => {nil=>["foo"]}
+    
+    HID.map 'persistance', 'persistence', 'typos'
+    => nil
+    
+    HID.identify 'persistance', 'typos'
+    => "persistence"
+    
+    HID.identify 'persistance'
+    => nil
+    
+    HID.recorded
+    => {nil=>["foo", "persistance"]}
+    
+    HID.identify 'fizz', 'buzz'
+    => nil
+    
+    HID.recorded
+    => {nil=>["foo", "persistance"], "fizz" => ["buzz"]}
 
 ## Contributing
 
