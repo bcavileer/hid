@@ -7,11 +7,11 @@ module HID
         class << self
           attr_accessor :store
 
-          def record(unknown, type)
+          def record(input, type)
             type_array = store[type] ||= []
 
-            unless type_array.include? unknown
-              type_array << unknown
+            unless type_array.include? input
+              type_array << input
             end
 
             nil

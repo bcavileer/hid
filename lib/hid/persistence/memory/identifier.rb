@@ -7,15 +7,15 @@ module HID
         class << self
           attr_accessor :store
 
-          def find(unknown, type)
+          def find(input, type)
             if (type_hash = store[type])
-              type_hash[unknown]
+              type_hash[input]
             end
           end
 
-          def map(unknown, identity, type)
+          def map(input, identity, type)
             type_hash         = store[type] ||= Hash.new
-            type_hash[unknown] = identity
+            type_hash[input] = identity
             nil
           end
         end
