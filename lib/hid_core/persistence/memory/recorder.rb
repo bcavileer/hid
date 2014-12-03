@@ -1,4 +1,4 @@
-module HID
+module HidCore
   module Persistence
     module Memory
       class Recorder

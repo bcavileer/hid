@@ -1,6 +1,6 @@
-# HID
+# HidCore
 
-[![Code Climate](https://codeclimate.com/github/bcavileer/hid/badges/gpa.svg)](https://codeclimate.com/github/bcavileer/hid)
+[![Code Climate](https://codeclimate.com/github/bcavileer/hid_core/badges/gpa.svg)](https://codeclimate.com/github/bcavileer/hid)
 
 TODO: Write a gem description
 
@@ -8,7 +8,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'hid'
+    gem 'hid_core'
 
 And then execute:
 
@@ -16,52 +16,52 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install hid
+    $ gem install hid_core
 
 ## Usage
 
 Configure (optional):
 
-    HID.configure do |config|
+    HidCore.configure do |config|
         config.identifier = SomeIdentifier
         config.recorder = SomeRecorder
     end
 
 Examples: (these were executed **in order** in a REPL)
     
-    HID.identify 'foo'
+    HidCore.identify 'foo'
     => nil
     
-    HID.map 'bar', 'baz'
+    HidCore.map 'bar', 'baz'
     => nil
     
-    HID.identify 'bar'
+    HidCore.identify 'bar'
     => "baz"
     
-    HID.recorded
+    HidCore.recorded
     => {nil=>["foo"]}
     
-    HID.map 'persistance', 'persistence', 'typos'
+    HidCore.map 'persistance', 'persistence', 'typos'
     => nil
     
-    HID.identify 'persistance', 'typos'
+    HidCore.identify 'persistance', 'typos'
     => "persistence"
     
-    HID.identify 'persistance'
+    HidCore.identify 'persistance'
     => nil
     
-    HID.recorded
+    HidCore.recorded
     => {nil=>["foo", "persistance"]}
     
-    HID.identify 'fizz', 'buzz'
+    HidCore.identify 'fizz', 'buzz'
     => nil
     
-    HID.recorded
+    HidCore.recorded
     => {nil=>["foo", "persistance"], "fizz" => ["buzz"]}
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/hid/fork )
+1. Fork it ( https://github.com/[my-github-username]/hid_core/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

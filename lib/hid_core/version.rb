@@ -1,3 +1,3 @@
-module HID
+module HidCore
   VERSION = '0.0.1'
 end

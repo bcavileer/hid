@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hid/version'
+require 'hid_core/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'hid'
-  spec.version       = HID::VERSION
+  spec.name          = 'hid_core'
+  spec.version       = HidCore::VERSION
   spec.authors       = ['Benjamin Cavileer']
   spec.email         = ['bcavileer@holmanauto.com']
   spec.summary       = %q{Identity Mapping}

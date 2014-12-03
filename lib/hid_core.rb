@@ -1,7 +1,7 @@
-require 'hid/version'
-require 'hid/configuration'
+require 'hid_core/version'
+require 'hid_core/configuration'
 
-module HID
+module HidCore
   class << self
     attr_accessor :configuration
 
