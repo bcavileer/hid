@@ -1,17 +1,20 @@
 require 'spec_helper'
 
 describe HID do
+  let(:identifier) { HID.configuration.identifier }
+  let(:recorder)   { HID.configuration.recorder }
+
+  # create new in-memory stores before each test
+  before(:each) do
+    identifier.store = Hash.new
+    recorder.store   = Hash.new
+  end
+
   let(:input)    { double 'Input' }
   let(:input2)   { double 'Other Input' }
   let(:type)     { double 'Type' }
   let(:type2)    { double 'Other Type' }
   let(:identity) { double 'Identity' }
-
-  # create new in-memory stores before each test
-  before(:each) do
-    HID::MemoryIdentifier.store = Hash.new
-    HID::MemoryRecorder.store   = Hash.new
-  end
 
   describe 'identified Inputs' do
     context 'without Type argument' do

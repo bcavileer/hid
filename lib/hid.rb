@@ -1,6 +1,4 @@
 require 'hid/version'
-require 'hid/memory_identifier'
-require 'hid/memory_recorder'
 require 'hid/configuration'
 
 module HID
