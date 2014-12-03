@@ -1,43 +1,55 @@
 require 'spec_helper'
 
 describe HID do
-  let(:unknown)  { double 'Unknown' }
-  let(:unknown2) { double 'Other Unknown' }
+  let(:input)    { double 'Input' }
+  let(:input2)   { double 'Other Input' }
   let(:type)     { double 'Type' }
   let(:type2)    { double 'Other Type' }
   let(:identity) { double 'Identity' }
 
+  # create new in-memory stores before each test
   before(:each) do
     HID::MemoryIdentifier.store = Hash.new
     HID::MemoryRecorder.store   = Hash.new
   end
 
-  describe 'identified objects' do
+  describe 'identified Inputs' do
     context 'without Type argument' do
       context 'nothing mapped' do
         it 'returns nil' do
-          expect(HID.identify unknown).to be_nil
+          expect(
+              HID.identify input
+          ).to be_nil
         end
       end
 
       context 'other mapped' do
         it 'returns nil' do
-          HID.map 'other', identity
-          expect(HID.identify unknown).to be_nil
+          HID.map input2, identity
+
+          expect(
+              HID.identify input
+          ).to be_nil
         end
       end
 
-      context 'Unknown mapped with Type' do
+      context 'Input mapped with Type' do
         it 'returns nil' do
-          HID.map unknown, identity, type
-          expect(HID.identify unknown).to be_nil
+          HID.map input, identity, type
+
+          expect(
+              HID.identify input
+          ).to be_nil
         end
       end
 
-      context 'Unknown mapped without Type' do
+      context 'Input mapped without Type' do
         it 'returns Identity' do
-          HID.map unknown, identity
-          expect(HID.identify unknown).to eq identity
+          HID.map input, identity
+
+          expect(
+              HID.identify input
+          ).to eq identity
         end
       end
     end
@@ -45,53 +57,72 @@ describe HID do
     context 'with Type argument' do
       context 'nothing mapped' do
         it 'returns nil' do
-          expect(HID.identify unknown, type).to be_nil
+          expect(
+              HID.identify input, type
+          ).to be_nil
         end
       end
 
       context 'other mapped Type' do
         it 'returns nil' do
-          HID.map unknown, identity, type
-          expect(HID.identify unknown, type2).to be_nil
+          HID.map input, identity, type
+
+          expect(
+              HID.identify input, type2
+          ).to be_nil
         end
       end
 
-      context 'Unknown mapped' do
+      context 'Input mapped' do
         it 'returns Identity' do
-          HID.map unknown, identity, type
-          expect(HID.identify unknown, type).to eq identity
+          HID.map input, identity, type
+
+          expect(
+              HID.identify input, type
+          ).to eq identity
         end
       end
     end
   end
 
-  describe 'objects not identified' do
+  describe 'not identified Inputs' do
     context 'without Type argument' do
       context 'nothing recorded' do
         it 'returns an empty Hash' do
-          expect(HID.recorded).to eq({})
+          expect(
+              HID.recorded
+          ).to eq({})
         end
       end
 
       context 'no Types' do
-        it 'returns a Hash with key nil and value Array with item Unknown' do
-          HID.identify unknown
-          expect(HID.recorded).to eq nil => [unknown]
+        it 'returns a Hash with key nil and value Array with item Input' do
+          HID.identify input
+
+          expect(
+              HID.recorded
+          ).to eq nil => [input]
         end
       end
 
       context 'with Types' do
-        it 'returns a Hash with key Type and value Array with item Unknown' do
-          HID.identify unknown, type
-          expect(HID.recorded).to eq type => [unknown]
+        it 'returns a Hash with key Type and value Array with item Input' do
+          HID.identify input, type
+
+          expect(
+              HID.recorded
+          ).to eq type => [input]
         end
       end
 
       context 'with and without Types' do
         it 'returns full Hash' do
-          HID.identify unknown
-          HID.identify unknown2, type
-          expect(HID.recorded).to eq nil => [unknown], type => [unknown2]
+          HID.identify input
+          HID.identify input2, type
+
+          expect(
+              HID.recorded
+          ).to eq nil => [input], type => [input2]
         end
       end
     end
@@ -99,29 +130,40 @@ describe HID do
     context 'with Type argument' do
       context 'nothing recorded' do
         it 'returns an empty Array' do
-          expect(HID.recorded type).to eq []
+          expect(
+              HID.recorded type
+          ).to eq []
         end
       end
 
       context 'no Types' do
         it 'returns an empty Array' do
-          HID.identify unknown
-          expect(HID.recorded type).to eq []
+          HID.identify input
+
+          expect(
+              HID.recorded type
+          ).to eq []
         end
       end
 
       context 'with Types' do
-        it 'returns Array with Unknown' do
-          HID.identify unknown, type
-          expect(HID.recorded type).to eq [unknown]
+        it 'returns Array with Input' do
+          HID.identify input, type
+
+          expect(
+              HID.recorded type
+          ).to eq [input]
         end
       end
 
       context 'with multiple Types' do
-        it 'returns Array with Unknown' do
-          HID.identify unknown, type
-          HID.identify unknown2, type2
-          expect(HID.recorded type).to eq [unknown]
+        it 'returns Array with Input' do
+          HID.identify input, type
+          HID.identify input2, type2
+
+          expect(
+              HID.recorded type
+          ).to eq [input]
         end
       end
     end
