@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HID do
+describe 'In-Memory HID' do
   # create new in-memory stores before each test
   before(:each) do
     HID.configure do |config|
