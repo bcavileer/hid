@@ -1,5 +1,7 @@
 # HID
 
+[![Code Climate](https://codeclimate.com/github/bcavileer/hid/badges/gpa.svg)](https://codeclimate.com/github/bcavileer/hid)
+
 TODO: Write a gem description
 
 ## Installation
