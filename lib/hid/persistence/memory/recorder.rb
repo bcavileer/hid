@@ -2,8 +2,6 @@ module HID
   module Persistence
     module Memory
       class Recorder
-        @store = Hash.new
-
         class << self
           attr_accessor :store
 

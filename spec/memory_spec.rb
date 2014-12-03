@@ -3,10 +3,7 @@ require 'spec_helper'
 describe 'In-Memory HID' do
   # create new in-memory stores before each test
   before(:each) do
-    HID.configure do |config|
-      config.identifier.store = Hash.new
-      config.recorder.store   = Hash.new
-    end
+    HID.configuration = HID::Configuration.new :memory
   end
 
   include_examples 'identifier'
