@@ -8,7 +8,7 @@ module HID
             nil
           end
 
-          def recorded(type=nil)
+          def recorded(type)
             # TODO
           end
         end

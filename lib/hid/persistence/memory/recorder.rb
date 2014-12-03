@@ -17,7 +17,7 @@ module HID
             nil
           end
 
-          def recorded(type=nil)
+          def recorded(type)
             if type
               store[type] || []
             else
