@@ -26,7 +26,7 @@ module HidCore
     private
 
     def find(unknown, type)
-      configuration.identifier.find unknown, type
+      configuration.identifier.find_identity unknown, type
     end
 
     def record(unknown, type)

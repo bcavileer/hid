@@ -8,7 +8,7 @@ module HidCore
         class << self
           attr_accessor :identities_class
 
-          def find(input, type)
+          def find_identity(input, type)
             identity = identities_class.where(input: input, id_type: type).first
             identity && identity.identity
           end

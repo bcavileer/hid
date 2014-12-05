@@ -5,7 +5,7 @@ module HidCore
         class << self
           attr_accessor :store
 
-          def find(input, type)
+          def find_identity(input, type)
             (type_hash = store[type]) && type_hash[input]
           end
 
