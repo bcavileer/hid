@@ -1,6 +1,6 @@
 # HidCore
 
-[![Code Climate](https://codeclimate.com/github/bcavileer/hid_core/badges/gpa.svg)](https://codeclimate.com/github/bcavileer/hid)
+[![Code Climate](https://codeclimate.com/github/bcavileer/hid_core/badges/gpa.svg)](https://codeclimate.com/github/bcavileer/hid_core)
 
 TODO: Write a gem description
 
